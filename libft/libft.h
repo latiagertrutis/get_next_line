@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 23:57:01 by mrodrigu          #+#    #+#             */
-/*   Updated: 2017/12/06 02:43:59 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/27 20:54:47 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void			ft_addlst(t_list *alst, t_list *new);
 int				ft_sqrt(int nb);
 void			ft_foreach(int *tab, int length, void (*f)(int));
 char			*ft_strnjoin(char const *s1, char const *s2, unsigned int n);
-t_tree			*ft_linktree(t_tree *tree, t_tree *new);
 t_tree			*ft_newleaf(void const *content, size_t content_size,
 		int tree_id);
 t_tree			*ft_treesearch(t_tree *elem, int tree_id);

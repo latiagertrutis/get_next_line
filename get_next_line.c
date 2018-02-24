@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 21:26:55 by mrodrigu          #+#    #+#             */
-/*   Updated: 2017/12/06 23:11:33 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:11:39 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,24 @@ static int		check_line(char *buff, size_t size)
 	size_t i;
 
 	i = 0;
-	while (buff[i] && buff[i] != '\n' && i < size)
+	while (buff[i] && buff[i] != END_OF_LINE && i < size)
 		i++;
 	if (i == size)
 		return (-1);
 	return (i);
+}
+
+static int		read_file(int fd, char *buff, char **line, char **lines)
+{
+	int	rd;
+
+	if (!(rd = read(fd, buff, BUFF_SIZE)))
+	{
+		ft_strdel(&(lines[fd]));
+		if (**line)
+			return (1);
+	}
+	return (rd);
 }
 
 static int		read_line(char **lines, int fd, char **line)
@@ -34,15 +47,8 @@ static int		read_line(char **lines, int fd, char **line)
 	while (1)
 	{
 		ft_memset(buff, 0, BUFF_SIZE + 1);
-		if (!(rd = read(fd, buff, BUFF_SIZE)))
-		{
-			ft_strdel(&(lines[fd]));
-			if (**line)
-				return (1);
-			return (0);
-		}
-		if (rd < 0)
-			return (-1);
+		if ((rd = read_file(fd, buff, line, lines)) <= 0)
+			return (rd);
 		if ((pos = check_line(buff, BUFF_SIZE)) >= 0)
 		{
 			aux = ft_strnjoin(*line, buff, pos);
