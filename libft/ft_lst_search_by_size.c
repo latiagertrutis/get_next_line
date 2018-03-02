@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lst_search_by_size.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/30 21:31:25 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/03/02 05:39:06 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/03/01 21:44:25 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/03/01 22:27:22 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-
-# define BUFF_SIZE 1024
-# define END_OF_LINE '\n'
-
-int				get_next_line(const int fd, char **line);
-
-#endif
+t_list	*ft_lst_search_by_size(t_list *head, size_t content_size)
+{
+	if (!head)
+		return (NULL);
+	while (head)
+	{
+		if (head->content_size == content_size)
+			return (head);
+		head = head->next;
+	}
+	return (NULL);
+}

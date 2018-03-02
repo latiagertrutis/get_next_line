@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 23:57:01 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/27 20:54:47 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/03/01 22:00:06 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ char			*ft_strnjoin(char const *s1, char const *s2, unsigned int n);
 t_tree			*ft_newleaf(void const *content, size_t content_size,
 		int tree_id);
 t_tree			*ft_treesearch(t_tree *elem, int tree_id);
+t_list			*ft_lst_search_by_size(t_list *head, size_t content_size);
 
 #endif
